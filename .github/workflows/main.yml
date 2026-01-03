@@ -5,6 +5,7 @@ name: cia01
 on:
   push:
     branches: [ "main" ]
+    workflow_dispatch:   # 👈 this enables the manual trigger
 
 jobs:
   deploy:
