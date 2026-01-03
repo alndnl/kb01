@@ -1,0 +1,14 @@
+---
+# first testing via git actions
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poda
+spec:
+  containers:
+    - name: apache
+      image: httpd
+      ports: 
+        - containerPort: 80
