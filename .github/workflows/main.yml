@@ -8,7 +8,9 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+## above will run from local runner & below -ubuntu- will run from the HELM
+#    runs-on: ubuntu-latest
 
     steps:
       - name: Set up kubeconfig
@@ -19,6 +21,8 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+###   THIS SECTION IS NEEDED, IF THE KUBE CLUSTER HAS TO BE CREATED WITHIN THE HELM IF YES, THEN 
+###   THE NEW POD WILL NOT BE CREATED IN THE LOCAL MACHINE, INSTEAD IT WILL CREATED IN THE HELP CLUSTER
 ##      - name: Install kind
 ##        uses: helm/kind-action@v1.9.0
 ##        with:
