@@ -1,14 +1,30 @@
 ---
 # first testing via git actions
 
-
 apiVersion: v1
 kind: Pod
 metadata:
   name: poda
+  labels: 
+    app: apache
 spec:
   containers:
     - name: apache
       image: httpd
       ports: 
         - containerPort: 80
+
+# making this to get exposed outside
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-service
+spec:
+  type: NodePort
+  selector:
+    app: apache
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
