@@ -13,6 +13,7 @@ spec:
       image: httpd
       ports: 
         - containerPort: 80
+# End of sec 
 
 # making this to get exposed outside
 ---
