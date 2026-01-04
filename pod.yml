@@ -13,7 +13,6 @@ spec:
       image: httpd
       ports: 
         - containerPort: 80
-# End of sec 
 
 # making this to get exposed outside
 ---
@@ -22,10 +21,12 @@ kind: Service
 metadata:
   name: apache-service
 spec:
-  type: NodePort
+#  type: NodePort     # for NodePort  [ kubectl port-forward pod/poda 8080:80 _using this can be accessed on the host(laptop browser)]
+type: ClusterIP     # for ClusterIP [accessible via cluster's internal IP]
   selector:
     app: apache
   ports:
-    - port: 80
+    - protocol: TCP     # for ClusterIP
+      port: 80
       targetPort: 80
-      nodePort: 30080
+#      nodePort: 30080     # for NodePort
